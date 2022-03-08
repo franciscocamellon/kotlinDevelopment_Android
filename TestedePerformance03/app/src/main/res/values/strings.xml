@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Teste de Performance 03</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_new_recipe_button">Add new recipe button</string>
+    <string name="enter_recipe_name">Enter recipe name</string>
+    <string name="enter_recipe_style">Enter recipe style</string>
+    <string name="save_recipe">Save recipe</string>
+    <string name="delete_icon">Delete icon</string>
+    <string name="new_recipe_add_button">New recipe add button</string>
+    <string name="btn_title_update">Update recipe</string>
+    <string name="btn_title_save">Save recipe</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="save_on_file">Save on file</string>
+</resources>
