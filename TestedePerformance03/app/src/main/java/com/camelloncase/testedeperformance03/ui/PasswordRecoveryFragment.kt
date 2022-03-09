@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.camelloncase.testedeperformance03.R
-import com.camelloncase.testedeperformance03.databinding.FragmentLoggedBinding
+import com.camelloncase.testedeperformance03.databinding.FragmentPasswordRecoveryBinding
 import com.camelloncase.testedeperformance03.databinding.FragmentSignUpBinding
 
-class LoggedFragment : Fragment() {
+class PasswordRecoveryFragment : Fragment() {
 
-    private var _binding: FragmentLoggedBinding? = null
+    private var _binding: FragmentPasswordRecoveryBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,9 +21,9 @@ class LoggedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_logged,container,false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_password_recovery,container,false)
 
-        binding.signOutImageView.setOnClickListener {
+        binding.backImageView.setOnClickListener {
             navigateToLoginScreen()
         }
 
@@ -32,7 +32,7 @@ class LoggedFragment : Fragment() {
 
     private fun navigateToLoginScreen() {
         findNavController().navigate(
-            LoggedFragmentDirections.actionLoggedFragmentToSignInFragment()
+            PasswordRecoveryFragmentDirections.actionPasswordRecoveryFragmentToSignInFragment()
         )
     }
 

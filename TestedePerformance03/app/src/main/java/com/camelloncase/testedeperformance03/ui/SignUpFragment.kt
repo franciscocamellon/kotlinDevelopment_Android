@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.camelloncase.testedeperformance03.R
 import com.camelloncase.testedeperformance03.databinding.FragmentSignInBinding
 import com.camelloncase.testedeperformance03.databinding.FragmentSignUpBinding
@@ -19,7 +20,7 @@ import com.camelloncase.testedeperformance03.viewmodel.AuthenticationViewModel
 class SignUpFragment : Fragment() {
 
     private var _binding: FragmentSignUpBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
     private lateinit var viewModelFactory: ViewModelProvider.AndroidViewModelFactory
     private lateinit var viewModel: AuthenticationViewModel
 
@@ -44,6 +45,10 @@ class SignUpFragment : Fragment() {
             viewModel.createUser(email, password)
         }
 
+        binding.backImageView.setOnClickListener {
+            navigateToLoginScreen()
+        }
+
         viewModel.userRegistrationStatus.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Loading -> {
@@ -53,6 +58,7 @@ class SignUpFragment : Fragment() {
                     binding.registerProgressBar.isVisible = false
                     Toast.makeText(context, "Registered Successfully", Toast.LENGTH_SHORT)
                         .show()
+                    navigateToLoginScreen()
                 }
                 is Resource.Error -> {
                     binding.registerProgressBar.isVisible = false
@@ -65,5 +71,10 @@ class SignUpFragment : Fragment() {
         return binding.root
     }
 
+    private fun navigateToLoginScreen() {
+        findNavController().navigate(
+            SignUpFragmentDirections.actionSignUpFragmentToSignInFragment()
+        )
+    }
 
 }

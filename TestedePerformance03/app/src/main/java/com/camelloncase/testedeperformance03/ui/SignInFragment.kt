@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.camelloncase.testedeperformance03.databinding.FragmentSignInBinding
+import com.camelloncase.testedeperformance03.util.Resource
+import com.camelloncase.testedeperformance03.viewmodel.AuthenticationViewModel
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,6 +25,8 @@ class SignInFragment : Fragment() {
 
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModelFactory: ViewModelProvider.AndroidViewModelFactory
+    private lateinit var viewModel: AuthenticationViewModel
     private lateinit var auth: FirebaseAuth
 
 
@@ -29,46 +36,70 @@ class SignInFragment : Fragment() {
     ): View? {
 
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
-        auth = Firebase.auth
         val view = binding.root
 
+        val application = requireNotNull(this.activity).application
+        viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        viewModel = ViewModelProvider(this, viewModelFactory)[AuthenticationViewModel::class.java]
+
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        auth = Firebase.auth
+
         binding.signUpTextView.setOnClickListener {
-            findNavController().navigate(
-                SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
-            )
+            navigateToSignUpScreen()
         }
 
-//        binding.signInAppCompatButton.setOnClickListener {
-//            val email = binding.emailEditText.text.toString()
-//            val password = binding.passwordEditText.text.toString()
-//
-//            when {
-//                email.isEmpty() || password.isEmpty() -> {
-//                    Toast.makeText(context, "Email or password is empty.", Toast.LENGTH_SHORT).show()
-//                }
-//                else -> {
-//                    awaitSignIn(auth, email,password)
-//                }
-//            }
-//        }
+        binding.recoveryAccountTextView.setOnClickListener {
+            navigateToRecoveryScreen()
+        }
+
+        binding.signInAppCompatButton.setOnClickListener {
+
+            val email = binding.emailEditText?.text.toString()
+            val password = binding.passwordEditText?.text.toString()
+
+            viewModel.loginUser(email, password)
+        }
+
+        viewModel.userSignInStatus.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Loading -> {
+                    binding.loginProgressBar.isVisible = true
+                }
+                is Resource.Success -> {
+                    binding.loginProgressBar.isVisible = false
+                    navigateToLoggedScreen()
+                    Toast.makeText(context, "Logged In Successfully", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                is Resource.Error -> {
+                    binding.loginProgressBar.isVisible = false
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
         return view
     }
 
-    suspend fun awaitSignIn(auth: FirebaseAuth, email: String, password: String): AuthResult? {
-        return try {
-            val data = auth.signInWithEmailAndPassword(email, password).await()
-            data
-        } catch (e: Exception) {
-            null
-        }
+    private fun navigateToLoggedScreen() {
+        findNavController().navigate(
+            SignInFragmentDirections.actionSignInFragmentToLoggedFragment()
+        )
     }
 
-//    private fun reload() {
-//        findNavController().navigate(
-//            com.camelloncase.testedeperformance03.SignInFragmentDirections.actionSignInFragmentToLoggedFragment()
-//        )
-//    }
+    private fun navigateToSignUpScreen() {
+        findNavController().navigate(
+            SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+        )
+    }
+
+    private fun navigateToRecoveryScreen() {
+        findNavController().navigate(
+            SignInFragmentDirections.actionSignInFragmentToPasswordRecoveryFragment()
+        )
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

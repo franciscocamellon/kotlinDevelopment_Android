@@ -14,6 +14,9 @@
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
+            android:id="@+id/action_signInFragment_to_passwordRecoveryFragment"
+            app:destination="@id/passwordRecoveryFragment" />
+        <action
             android:id="@+id/action_signInFragment_to_loggedFragment"
             app:destination="@id/loggedFragment" />
     </fragment>
@@ -30,5 +33,18 @@
         android:id="@+id/loggedFragment"
         android:name="com.camelloncase.testedeperformance03.ui.LoggedFragment"
         android:label="fragment_logged"
-        tools:layout="@layout/fragment_logged" />
+        tools:layout="@layout/fragment_logged" >
+        <action
+            android:id="@+id/action_loggedFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordRecoveryFragment"
+        android:name="com.camelloncase.testedeperformance03.ui.PasswordRecoveryFragment"
+        android:label="fragment_password_recovery"
+        tools:layout="@layout/fragment_password_recovery" >
+        <action
+            android:id="@+id/action_passwordRecoveryFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
 </navigation>

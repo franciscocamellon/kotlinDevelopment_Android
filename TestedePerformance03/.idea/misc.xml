@@ -5,14 +5,18 @@
       <map>
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_back.xml" value="0.1745" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_buttom.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_email.xml" value="0.158" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_field.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_infnet_esti_logo.xml" value="0.112" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_infnet_logo.xml" value="0.1745" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_lock.xml" value="0.1745" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_sign_out.xml" value="0.1745" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_logged.xml" value="0.25416666666666665" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_password_recovery.xml" value="0.25416666666666665" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_sign_in.xml" value="0.25416666666666665" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/progress_bar.xml" value="0.18611111111111112" />
       </map>
     </option>
   </component>

@@ -16,8 +16,8 @@ class AuthenticationViewModel: ViewModel() {
     private val _userRegistrationStatus = MutableLiveData<Resource<AuthResult>>()
     val userRegistrationStatus: LiveData<Resource<AuthResult>> = _userRegistrationStatus
 
-    private val _userSignUpStatus = MutableLiveData<Resource<AuthResult>>()
-    val userSignUpStatus: LiveData<Resource<AuthResult>> = _userSignUpStatus
+    private val _userSignInStatus = MutableLiveData<Resource<AuthResult>>()
+    val userSignInStatus: LiveData<Resource<AuthResult>> = _userSignInStatus
 
     private val authRepository = AuthenticationRepository()
 
@@ -44,12 +44,12 @@ class AuthenticationViewModel: ViewModel() {
 
     fun loginUser(userEmail: String, userPassword: String) {
         if (userEmail.isEmpty() || userPassword.isEmpty()) {
-            _userSignUpStatus.postValue(Resource.Error("Empty strings"))
+            _userSignInStatus.postValue(Resource.Error("Empty strings"))
         } else {
-            _userSignUpStatus.postValue(Resource.Loading())
+            _userSignInStatus.postValue(Resource.Loading())
             viewModelScope.launch(Dispatchers.Main) {
                 val loginResult = authRepository.loginUser(userEmail, userPassword)
-                _userSignUpStatus.postValue(loginResult)
+                _userSignInStatus.postValue(loginResult)
             }
         }
     }
