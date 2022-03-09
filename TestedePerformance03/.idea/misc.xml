@@ -3,15 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.1895" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/drawable/ic_baseline_system_update_24.xml" value="0.1895" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/layout/activity_management.xml" value="0.25416666666666665" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/layout/activity_recipe_management.xml" value="0.25416666666666665" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/layout/fragment_management.xml" value="0.1" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/layout/fragment_recipes.xml" value="0.25416666666666665" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance01/app/src/main/res/layout/recipe_item.xml" value="0.25416666666666665" />
-        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment/TestedePerformance03/app/src/main/res/layout/activity_recipe_management.xml" value="0.36666666666666664" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_back.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_buttom.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_field.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_infnet_logo.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_lock.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/drawable/ic_sign_out.xml" value="0.1745" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_logged.xml" value="0.25416666666666665" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_sign_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/TestedePerformance03/app/src/main/res/layout/fragment_sign_up.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
