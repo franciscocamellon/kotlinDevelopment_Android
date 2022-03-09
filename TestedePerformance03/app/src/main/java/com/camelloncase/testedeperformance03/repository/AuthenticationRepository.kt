@@ -15,6 +15,7 @@ class AuthenticationRepository {
     suspend fun createUser(userEmail: String, userPassword: String): Resource<AuthResult> {
 
         return withContext(Dispatchers.IO) {
+
             safeCall {
 
                 val registrationResult = firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).await()
@@ -28,12 +29,22 @@ class AuthenticationRepository {
     suspend fun loginUser(email: String, password: String): Resource<AuthResult> {
 
         return withContext(Dispatchers.IO) {
+
             safeCall {
 
                 val result = firebaseAuth.signInWithEmailAndPassword(email, password).await()
 
                 Resource.Success(result)
             }
+        }
+    }
+
+    suspend fun recoverPassword(email: String) {
+
+        return withContext(Dispatchers.IO) {
+
+            firebaseAuth.sendPasswordResetEmail(email).await()
+
         }
     }
 }
