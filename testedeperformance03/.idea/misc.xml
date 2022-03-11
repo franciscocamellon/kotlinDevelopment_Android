@@ -4,9 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/drawable/ic_back.xml" value="0.34" />
+        <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.34" />
+        <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.34" />
+        <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.34" />
+        <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
+        <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/layout/fragment_recover.xml" value="0.36666666666666664" />
         <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Camello/_dev/infnet/kotlinDevelopment_Android/testedeperformance03/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

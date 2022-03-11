@@ -24,8 +24,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        (activity as AppCompatActivity?)!!.supportActionBar?.show()
-
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 

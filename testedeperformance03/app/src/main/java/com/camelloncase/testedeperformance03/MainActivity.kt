@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener {_, destination, _ ->
             when (destination.id) {
-                R.id.navigation_login -> binding.bottomNavigation.visibility = View.GONE
-                R.id.navigation_register -> binding.bottomNavigation.visibility = View.GONE
-                R.id.navigation_recover -> binding.bottomNavigation.visibility = View.GONE
-                else -> binding.bottomNavigation.visibility = View.VISIBLE
+                R.id.navigation_login -> enablingBottomNavBar("gone")
+                R.id.navigation_register -> enablingBottomNavBar("gone")
+                R.id.navigation_recover -> enablingBottomNavBar("gone")
+                else -> enablingBottomNavBar("visible")
             }
         }
 
@@ -37,10 +37,17 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_calendar, R.id.navigation_map, R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    private fun enablingBottomNavBar(state: String) {
+        when (state) {
+            "gone" -> binding.bottomNavigation.visibility = View.GONE
+            "visible" -> binding.bottomNavigation.visibility = View.VISIBLE
+        }
     }
 }
