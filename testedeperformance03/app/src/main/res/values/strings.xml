@@ -36,4 +36,9 @@
     <string name="title_login">Login</string>
     <string name="title_register">Register</string>
     <string name="title_recover">Recover</string>
+    <string name="recover_description">Enter your email address in order to send you the steps to change your password.</string>
+    <string name="title_password_recovery">Password recovery</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_map">Map</string>
+    <string name="title_profile">Profile</string>
 </resources>
