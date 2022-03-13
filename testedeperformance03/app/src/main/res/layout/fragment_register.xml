@@ -24,12 +24,11 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backImageView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -41,14 +40,26 @@
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/subject_title"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/subtitle_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,6 +73,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <TextView
+            android:id="@+id/register_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:gravity="start"
+            android:text="@string/create_your_account"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/emailEditText"
@@ -128,6 +149,17 @@
             android:paddingLeft="64dp"
             android:paddingRight="64dp"
             android:text="@string/signup"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/ic_buttom"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:text="@string/cancel"
             android:textColor="@color/white" />
     </LinearLayout>
 

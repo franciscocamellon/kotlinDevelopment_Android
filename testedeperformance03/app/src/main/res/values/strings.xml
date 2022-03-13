@@ -41,4 +41,7 @@
     <string name="title_calendar">Calendar</string>
     <string name="title_map">Map</string>
     <string name="title_profile">Profile</string>
+    <string name="subject_title">Desenvolvimento Android</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="cancel">Cancel</string>
 </resources>
