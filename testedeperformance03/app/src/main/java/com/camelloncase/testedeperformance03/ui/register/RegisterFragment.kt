@@ -60,7 +60,7 @@ class RegisterFragment : Fragment() {
             }
         }
 
-        binding.backImageView.setOnClickListener {
+        binding.cancelButton.setOnClickListener {
             navigateToLoginScreen()
         }
 

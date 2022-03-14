@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.register.RegisterFragment">
 
-    <ImageView
-        android:id="@+id/backImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back"
-        tools:ignore="VectorDrawableCompat"
-        android:contentDescription="@string/all"
-        android:layout_marginStart="16dp" />
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
@@ -65,8 +52,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_height="380dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,15 +78,15 @@
             android:layout_marginTop="24dp"
             android:layout_marginRight="24dp"
             android:autofillHints="@string/email"
-            android:textColorHint="@color/black_40"
             android:background="@drawable/ic_field"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/email"
-            android:textColor="@color/black"
             android:inputType="textEmailAddress"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_40" />
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -110,16 +96,16 @@
             android:layout_marginTop="24dp"
             android:layout_marginRight="24dp"
             android:autofillHints="@string/password"
-            android:textColorHint="@color/black_40"
             android:background="@drawable/ic_field"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/password"
-            android:textColor="@color/black"
             android:inputType="textPassword"
             android:maxLength="16"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_40" />
 
         <EditText
             android:id="@+id/repeatPasswordEditText"
@@ -129,38 +115,47 @@
             android:layout_marginTop="24dp"
             android:layout_marginRight="24dp"
             android:autofillHints="@string/repeat_password"
-            android:textColorHint="@color/black_40"
             android:background="@drawable/ic_field"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="@string/repeat_password"
-            android:textColor="@color/black"
             android:inputType="textPassword"
             android:maxLength="16"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_40" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signUpButton"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/ic_buttom"
-            android:paddingLeft="64dp"
-            android:paddingRight="64dp"
-            android:text="@string/signup"
-            android:textColor="@color/white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/ic_buttom"
-            android:paddingLeft="64dp"
-            android:paddingRight="64dp"
-            android:text="@string/cancel"
-            android:textColor="@color/white" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="@string/signup"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ic_buttom"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="@string/cancel"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <ProgressBar
