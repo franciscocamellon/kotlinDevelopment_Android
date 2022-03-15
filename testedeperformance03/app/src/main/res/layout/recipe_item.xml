@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/esti_blue_light"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/recipeNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_toStartOf="@id/deleteRecipeImageView"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:text="Ma Hell's"/>
+
+        <TextView
+            android:id="@+id/recipeStyleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recipeNameText"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/recipeCreateDateText"
+            android:layout_margin="3dp"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="Munich Helles" />
+
+        <TextView
+            android:id="@+id/recipeCreateDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recipeNameText"
+            android:layout_toStartOf="@id/deleteRecipeImageView"
+            android:layout_margin="3dp"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            tools:text="Created in 20 FEV 22"/>
+
+        <ImageView
+            android:id="@+id/deleteRecipeImageView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_baseline_delete_24"
+            app:tint="@color/white"
+            android:contentDescription="@string/delete_icon" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -44,4 +44,11 @@
     <string name="subject_title">Desenvolvimento Android</string>
     <string name="create_your_account">Create your account</string>
     <string name="cancel">Cancel</string>
+    <string name="delete_icon">Delete icon</string>
+    <string name="new_recipe_add_buttom">New recipe add buttom</string>
+    <string name="save_btn">Save</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="save_on_file">Save on file</string>
+    <string name="enter_recipe_style">Enter recipe style</string>
+    <string name="enter_recipe_name">Enter recipe name</string>
 </resources>
