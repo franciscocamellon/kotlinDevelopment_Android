@@ -6,12 +6,6 @@
     app:startDestination="@+id/navigation_login">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.camelloncase.testedeperformance03.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
         android:id="@+id/navigation_login"
         android:name="com.camelloncase.testedeperformance03.ui.login.LoginFragment"
         android:label="@string/title_login"
@@ -23,8 +17,8 @@
             android:id="@+id/action_navigation_login_to_navigation_recover"
             app:destination="@id/navigation_recover" />
         <action
-            android:id="@+id/action_navigation_login_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/action_navigation_login_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_register"
@@ -45,18 +39,32 @@
             app:destination="@id/navigation_login" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.camelloncase.testedeperformance03.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/recipesFragment"
+        android:name="com.camelloncase.testedeperformance03.ui.recipes.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_recipeManagementActivity"
+            app:destination="@id/recipeManagementActivity" />
+        <argument
+            android:name="actionType"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="recipeName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="recipeStyle"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
     <fragment
-        android:id="@+id/navigation_calendar"
-        android:name="com.camelloncase.testedeperformance03.ui.calendar.CalendarFragment"
-        android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
-    <fragment
-        android:id="@+id/navigation_map"
-        android:name="com.camelloncase.testedeperformance03.ui.map.MapFragment"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        android:id="@+id/recipeManagementActivity"
+        android:name="com.camelloncase.testedeperformance03.ui.management.RecipeManagementActivity"
+        android:label="RecipeManagementActivity" >
+        <action
+            android:id="@+id/action_recipeManagementActivity_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </fragment>
 </navigation>
