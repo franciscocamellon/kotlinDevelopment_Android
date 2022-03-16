@@ -6,12 +6,22 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.regex.Pattern
 
 fun showMessageToUser(context: Context?, message: String) {
 
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 
+}
+
+fun formattedCurrentDate(pattern: String): String {
+
+    val date = Calendar.getInstance().time
+    val formatter = SimpleDateFormat(pattern, Locale.getDefault())
+
+    return formatter.format(date)
 }
 
 fun checkPasswordPattern(password: String): Boolean {
