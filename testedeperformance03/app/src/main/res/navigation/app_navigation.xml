@@ -43,6 +43,9 @@
         android:name="com.camelloncase.testedeperformance03.ui.recipes.RecipesFragment"
         android:label="fragment_recipes"
         tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_managementFragment"
+            app:destination="@id/managementFragment" />
         <argument
             android:name="actionType"
             android:defaultValue=""
@@ -55,12 +58,14 @@
             android:name="recipeStyle"
             android:defaultValue=""
             app:argType="string" />
-        <action
-            android:id="@+id/action_recipesFragment_to_managementFragment"
-            app:destination="@id/managementFragment" />
+        <argument
+            android:name="recipeCreateDate"
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_recipesFragment_to_navigation_login"
             app:destination="@id/navigation_login" />
+
     </fragment>
     <fragment
         android:id="@+id/managementFragment"

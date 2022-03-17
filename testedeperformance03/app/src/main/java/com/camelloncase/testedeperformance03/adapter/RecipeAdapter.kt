@@ -2,9 +2,7 @@ package com.camelloncase.testedeperformance03.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
-import com.camelloncase.testedeperformance03.R
 import com.camelloncase.testedeperformance03.adapter.viewholder.RecipeViewHolder
 import com.camelloncase.testedeperformance03.databinding.RecipeItemBinding
 import com.camelloncase.testedeperformance03.model.Recipe
