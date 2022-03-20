@@ -6,13 +6,15 @@ import com.camelloncase.testedeperformance03.model.Recipe
 
 class RecipeViewHolder(private val itemBinding: RecipeItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
 
-    private val button = itemBinding.deleteRecipeImageView
+    val deleteButton = itemBinding.deleteImageView
 
     fun bindItem(recipe: Recipe) {
-        itemBinding.recipeNameText.text = recipe.recipeName
-        itemBinding.recipeStyleText.text = recipe.recipeStyle
-        itemBinding.recipeCreateDateText.text = recipe.recipeCreateDate
+        itemBinding.nameTextView.text = recipe.recipeName
+        itemBinding.styleTextView.text = recipe.recipeStyle
+        itemBinding.createDateTextView.text = "Create: ${recipe.recipeCreateDate}"
 
+        if(recipe.recipeUpdateDate != null) {
+            itemBinding.updateDateTextView.text = "Update: ${recipe.recipeUpdateDate}"
+        }
     }
-
 }

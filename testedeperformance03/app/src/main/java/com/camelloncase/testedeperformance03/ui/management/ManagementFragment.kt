@@ -1,31 +1,29 @@
 package com.camelloncase.testedeperformance03.ui.management
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.Button
+import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.camelloncase.testedeperformance03.R
 import com.camelloncase.testedeperformance03.databinding.FragmentManagementBinding
 import com.camelloncase.testedeperformance03.model.Recipe
-import com.camelloncase.testedeperformance03.ui.recipes.RecipesFragmentArgs
 import com.camelloncase.testedeperformance03.util.formattedCurrentDate
-import com.camelloncase.testedeperformance03.viewmodel.RecipeViewModel
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.camelloncase.testedeperformance03.viewmodel.ManagementViewModel
 
 class ManagementFragment : Fragment() {
 
     private var _binding: FragmentManagementBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModelFactory: ViewModelProvider.AndroidViewModelFactory
-    private lateinit var viewModel: RecipeViewModel
-    private var db = Firebase.firestore
+    private lateinit var viewModel: ManagementViewModel
+    private lateinit var recipeName: EditText
+    private lateinit var recipeStyle: EditText
+    private lateinit var submitButton: Button
+    private lateinit var cancelButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,26 +34,56 @@ class ManagementFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        viewModel = ViewModelProvider(this, viewModelFactory)[RecipeViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ManagementViewModel::class.java]
 
-        val args = RecipesFragmentArgs.fromBundle(requireArguments())
+        initComponents()
+
+        val args = ManagementFragmentArgs.fromBundle(requireArguments())
 
         if (args.actionType == "update") {
-            binding.nameTextInputEditText.setText(args.recipeName.toString())
-            binding.styleTextInputEditText.setText(args.recipeStyle.toString())
-        }
 
-        binding.submitButton.setOnClickListener {
+            val updateDate = formattedCurrentDate("dd-MMM-yy hh:mm")
 
-            val name = binding.nameTextInputEditText.text.toString()
-            val style = binding.styleTextInputEditText.text.toString()
-            val date = formattedCurrentDate("dd MMM yy - hh:mm")
+            binding.nameTextInputEditText.setText(args.recipeName)
+            binding.styleTextInputEditText.setText(args.recipeStyle)
+            binding.createDateTextInputEditText.setText(args.recipeCreateDate)
+            binding.createDateTextInputEditText.isEnabled = false
+            binding.updateDateTextInputEditText.setText(updateDate)
+            binding.updateDateTextInputEditText.isEnabled = false
+            binding.submitButton.text = "Update"
 
-            val recipe = Recipe(name, style, date)
+            binding.submitButton.setOnClickListener {
 
-            viewModel.create(recipe)
-            goToRecipesScreen()
+                val name = binding.nameTextInputEditText.text.toString()
+                val style = binding.styleTextInputEditText.text.toString()
 
+                val recipe = Recipe(args.id, name, style, args.recipeCreateDate, updateDate)
+
+                viewModel.update(recipe)
+
+                goToRecipesScreen()
+
+            }
+        } else {
+
+            val createDate = formattedCurrentDate("dd-MMM-yy hh:mm")
+
+            binding.createDateTextInputEditText.setText(createDate)
+            binding.createDateTextInputEditText.isEnabled = false
+            binding.updateDateTextInputEditText.isEnabled = false
+
+            binding.submitButton.setOnClickListener {
+
+                val name = binding.nameTextInputEditText.text.toString()
+                val style = binding.styleTextInputEditText.text.toString()
+
+                val recipe = Recipe(recipeName = name, recipeStyle = style, recipeCreateDate = createDate)
+
+                viewModel.create(recipe)
+
+                goToRecipesScreen()
+
+            }
         }
 
         binding.cancelButton.setOnClickListener {
@@ -63,6 +91,13 @@ class ManagementFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun initComponents() {
+        recipeName = binding.nameTextInputEditText
+        recipeStyle = binding.styleTextInputEditText
+        submitButton = binding.submitButton
+        cancelButton = binding.cancelButton
     }
 
     private fun goToRecipesScreen() {

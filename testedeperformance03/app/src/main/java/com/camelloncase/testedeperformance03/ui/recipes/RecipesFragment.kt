@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,26 +13,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.camelloncase.testedeperformance03.adapter.RecipeAdapter
 import com.camelloncase.testedeperformance03.databinding.FragmentRecipesBinding
 import com.camelloncase.testedeperformance03.model.Recipe
-import com.camelloncase.testedeperformance03.ui.management.ManagementFragmentDirections
-import com.camelloncase.testedeperformance03.viewmodel.RecipeViewModel
+import com.camelloncase.testedeperformance03.viewmodel.RecipesViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
 
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
     private lateinit var recipesRecyclerView: RecyclerView
+    private lateinit var recipeAdapter: RecipeAdapter
     private lateinit var addFloatingActionButton: FloatingActionButton
     private lateinit var viewModelFactory: ViewModelProvider.AndroidViewModelFactory
-    private lateinit var viewModel: RecipeViewModel
-    private lateinit var recipeAdapter: RecipeAdapter
-    private lateinit var recipeName: EditText
-    private lateinit var recipeStyle: EditText
-    private lateinit var recipeCreateDate: EditText
+    private lateinit var viewModel: RecipesViewModel
     private lateinit var recipesList: ArrayList<Recipe>
-    private var db = Firebase.firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +36,7 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
 
         val application = requireNotNull(this.activity).application
         viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        viewModel = ViewModelProvider(this, viewModelFactory)[RecipeViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[RecipesViewModel::class.java]
 
         recipesRecyclerView = binding.recipesRecyclerView
         recipesRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -54,13 +46,16 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
         addFloatingActionButton = binding.addFloatingActionButton
 
         addFloatingActionButton.setOnClickListener {
-            goToManagementScreen()
+            goToCreateScreen()
         }
 
         viewModel.getListLiveData.observe(viewLifecycleOwner, Observer {
             onGetList(it)
         })
 
+        viewModel.deleteLiveData.observe(viewLifecycleOwner, Observer  {
+            viewModel.getList()
+        })
 
         return binding.root
     }
@@ -70,34 +65,34 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
         recipesList.addAll(it)
 
         recipeAdapter = RecipeAdapter(recipesList, this)
-
         recipesRecyclerView.adapter = recipeAdapter
-        recipesRecyclerView.layoutManager = LinearLayoutManager(context)
 
         recipeAdapter.notifyDataSetChanged()
     }
 
-    override fun onClick(item: Recipe, position: Int) {
-        goToManagementScreen("update", item.recipeName, item.recipeStyle, item.recipeCreateDate)
+    private fun goToManagementScreen(recipe: Recipe) {
 
+        val action = RecipesFragmentDirections.actionRecipesFragmentToManagementFragment()
+        action.actionType = "update"
+        action.id = recipe.id.toString()
+        action.recipeName = recipe.recipeName.toString()
+        action.recipeStyle = recipe.recipeStyle.toString()
+        action.recipeCreateDate = recipe.recipeCreateDate.toString()
+
+        findNavController().navigate(action)
     }
 
-    override fun onDelete(item: Recipe, position: Int) {
-        TODO("Not yet implemented")
+    private fun goToCreateScreen() {
+        val action = RecipesFragmentDirections.actionRecipesFragmentToManagementFragment()
+        findNavController().navigate(action)
     }
 
-    private fun goToManagementScreen(actionType: String? = null, name: String? = null, style: String? = null, date: String? = null) {
-
-        findNavController().navigate(
-            RecipesFragmentDirections
-                .actionRecipesFragmentToManagementFragment(
-                    actionType,
-                    name,
-                    style,
-                    date
-                )
-        )
+    override fun onClick(recipe: Recipe, position: Int) {
+        goToManagementScreen(recipe)
     }
 
+    override fun onDelete(recipe: Recipe, position: Int) {
+        viewModel.delete(recipe.id!!)
+    }
 
 }

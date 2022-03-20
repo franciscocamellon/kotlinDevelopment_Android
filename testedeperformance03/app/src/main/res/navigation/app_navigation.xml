@@ -46,8 +46,25 @@
         <action
             android:id="@+id/action_recipesFragment_to_managementFragment"
             app:destination="@id/managementFragment" />
+
+        <action
+            android:id="@+id/action_recipesFragment_to_navigation_login"
+            app:destination="@id/navigation_login" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/managementFragment"
+        android:name="com.camelloncase.testedeperformance03.ui.management.ManagementFragment"
+        android:label="ManagementFragment" >
+        <action
+            android:id="@+id/action_managementFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
         <argument
             android:name="actionType"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="id"
             android:defaultValue=""
             app:argType="string" />
         <argument
@@ -62,17 +79,9 @@
             android:name="recipeCreateDate"
             android:defaultValue=""
             app:argType="string" />
-        <action
-            android:id="@+id/action_recipesFragment_to_navigation_login"
-            app:destination="@id/navigation_login" />
-
-    </fragment>
-    <fragment
-        android:id="@+id/managementFragment"
-        android:name="com.camelloncase.testedeperformance03.ui.management.ManagementFragment"
-        android:label="ManagementFragment" >
-        <action
-            android:id="@+id/action_managementFragment_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+        <argument
+            android:name="recipeUpdateDate"
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
 </navigation>
