@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@+id/navigation_login">
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.camelloncase.testedeperformance03.ui.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_register"
+            app:destination="@id/navigation_register" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_recover"
+            app:destination="@id/navigation_recover" />
+        <action
+            android:id="@+id/action_navigation_login_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.camelloncase.testedeperformance03.ui.register.RegisterFragment"
+        android:label="@string/title_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_navigation_register_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_recover"
+        android:name="com.camelloncase.testedeperformance03.ui.recover.RecoverFragment"
+        android:label="@string/title_recover"
+        tools:layout="@layout/fragment_recover" >
+        <action
+            android:id="@+id/action_navigation_recover_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.camelloncase.testedeperformance03.ui.recipes.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_managementFragment"
+            app:destination="@id/managementFragment" />
+
+        <action
+            android:id="@+id/action_recipesFragment_to_navigation_login"
+            app:destination="@id/navigation_login" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/managementFragment"
+        android:name="com.camelloncase.testedeperformance03.ui.management.ManagementFragment"
+        android:label="ManagementFragment" >
+        <action
+            android:id="@+id/action_managementFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+        <argument
+            android:name="actionType"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="recipeName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="recipeStyle"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="recipeCreateDate"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="recipeUpdateDate"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+</navigation>
