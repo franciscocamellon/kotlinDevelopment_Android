@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.camelloncase.testedeperformance03.ui.login.LoginFragment"
+        android:name="com.camelloncase.assesment.ui.login.LoginFragment"
         android:label="@string/title_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_register"
-        android:name="com.camelloncase.testedeperformance03.ui.register.RegisterFragment"
+        android:name="com.camelloncase.assesment.ui.register.RegisterFragment"
         android:label="@string/title_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_recover"
-        android:name="com.camelloncase.testedeperformance03.ui.recover.RecoverFragment"
+        android:name="com.camelloncase.assesment.ui.recover.RecoverFragment"
         android:label="@string/title_recover"
         tools:layout="@layout/fragment_recover" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.camelloncase.testedeperformance03.ui.recipes.RecipesFragment"
+        android:name="com.camelloncase.assesment.ui.recipes.RecipesFragment"
         android:label="fragment_recipes"
         tools:layout="@layout/fragment_recipes" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/managementFragment"
-        android:name="com.camelloncase.testedeperformance03.ui.management.ManagementFragment"
+        android:name="com.camelloncase.assesment.ui.management.ManagementFragment"
         android:label="ManagementFragment" >
         <action
             android:id="@+id/action_managementFragment_to_recipesFragment"
