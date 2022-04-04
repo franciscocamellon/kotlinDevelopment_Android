@@ -26,4 +26,16 @@
         app:tint="@color/white"
         android:contentDescription="@string/new_recipe_add_buttom" />
 
+    <ProgressBar
+        android:id="@+id/recipesLoadingProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#30ffffff"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </RelativeLayout>

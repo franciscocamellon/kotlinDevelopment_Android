@@ -13,6 +13,7 @@ import com.camelloncase.assesment.databinding.FragmentManagementBinding
 import com.camelloncase.assesment.model.Recipe
 import com.camelloncase.assesment.util.formattedCurrentDate
 import com.camelloncase.assesment.viewmodel.ManagementViewModel
+import java.util.*
 
 class ManagementFragment : Fragment() {
 
@@ -74,10 +75,11 @@ class ManagementFragment : Fragment() {
 
             binding.submitButton.setOnClickListener {
 
+                val recipeId = UUID.randomUUID().toString()
                 val name = binding.nameTextInputEditText.text.toString()
                 val style = binding.styleTextInputEditText.text.toString()
 
-                val recipe = Recipe(recipeName = name, recipeStyle = style, recipeCreateDate = createDate)
+                val recipe = Recipe(recipeId, recipeName = name, recipeStyle = style, recipeCreateDate = createDate)
 
                 viewModel.create(recipe)
 

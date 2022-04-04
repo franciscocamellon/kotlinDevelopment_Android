@@ -1,11 +1,20 @@
 package com.camelloncase.assesment.util
 
 import android.content.Context
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.FirebaseError
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.MutableData
+import com.google.firebase.database.Transaction
+import com.google.firebase.firestore.DocumentReference
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
+
 
 fun showMessageToUser(context: Context?, message: String) {
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.camelloncase.assesment.adapter.RecipeAdapter
 import com.camelloncase.assesment.databinding.FragmentRecipesBinding
 import com.camelloncase.assesment.model.Recipe
+import com.camelloncase.assesment.util.Response
+import com.camelloncase.assesment.util.showMessageToUser
 import com.camelloncase.assesment.viewmodel.RecipesViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.QuerySnapshot
 
 class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
 
@@ -41,7 +45,7 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
         recipesRecyclerView = binding.recipesRecyclerView
         recipesRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        viewModel.getList()
+        viewModel.getAllRecipes()
 
         addFloatingActionButton = binding.addFloatingActionButton
 
@@ -49,20 +53,45 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
             goToCreateScreen()
         }
 
-        viewModel.getListLiveData.observe(viewLifecycleOwner, Observer {
-            onGetList(it)
+//        viewModel.getListLiveData.observe(viewLifecycleOwner, Observer {
+//            onGetList(it)
+//        })
+
+        viewModel.recipeLoadingStatus.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Response.Loading -> {
+                    enableProgressBar(true)
+                }
+                is Response.Success -> {
+                    enableProgressBar(false)
+                    onGetListAsync(it)
+                    showMessageToUser(context, "Recipes successfully loaded")
+                }
+                is Response.Failure -> {
+                    enableProgressBar(false)
+                    showMessageToUser(context, it.message.toString())
+                }
+            }
         })
 
         viewModel.deleteLiveData.observe(viewLifecycleOwner, Observer  {
-            viewModel.getList()
+            viewModel.getAllRecipes()
         })
 
         return binding.root
     }
 
-    private fun onGetList(it: List<Recipe>) {
+    private fun onGetListAsync(it: Response<QuerySnapshot>) {
         recipesList = ArrayList()
-        recipesList.addAll(it)
+        for (item in it.data!!) {
+            val recipe = Recipe()
+            recipe.id = item.data["id"] as String?
+            recipe.recipeName = item.data["name"] as String?
+            recipe.recipeStyle = item.data["style"] as String?
+            recipe.recipeCreateDate = item.data["create_date"] as String?
+            recipe.recipeUpdateDate = item.data["update_date"] as String?
+            recipesList.add(recipe)
+        }
 
         recipeAdapter = RecipeAdapter(recipesList, this)
         recipesRecyclerView.adapter = recipeAdapter
@@ -92,7 +121,12 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
     }
 
     override fun onDelete(recipe: Recipe, position: Int) {
+
         viewModel.delete(recipe.id!!)
+    }
+
+    private fun enableProgressBar(choice: Boolean) {
+        binding.recipesLoadingProgressBar.isVisible = choice
     }
 
 }

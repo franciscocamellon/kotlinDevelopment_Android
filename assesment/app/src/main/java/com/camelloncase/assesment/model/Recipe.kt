@@ -1,7 +1,9 @@
 package com.camelloncase.assesment.model
 
 import com.google.firebase.firestore.Exclude
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.IgnoreExtraProperties
+import java.util.*
 
 @IgnoreExtraProperties
 data class Recipe (

@@ -27,11 +27,16 @@ class ManagementViewModel : ViewModel() {
 
     fun create(recipe: Recipe) {
 
-        documentReference.add(recipe.toMap()).addOnSuccessListener {
-            createLiveData.postValue(true)
-        }.addOnFailureListener {
-            Log.d("create", it.localizedMessage!!)
-            createLiveData.postValue(false)
+//        documentReference.add(recipe.toMap()).addOnSuccessListener {
+
+        if (recipe.id != null) {
+            documentReference.document(recipe.id!!).set(recipe.toMap())
+                .addOnSuccessListener {
+                    createLiveData.postValue(true)
+                }.addOnFailureListener {
+                    Log.d("create", it.localizedMessage!!)
+                    createLiveData.postValue(false)
+                }
         }
     }
 
