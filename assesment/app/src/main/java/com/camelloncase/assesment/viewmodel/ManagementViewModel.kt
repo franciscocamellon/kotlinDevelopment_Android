@@ -4,15 +4,21 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.camelloncase.assesment.model.Brewery
 import com.camelloncase.assesment.model.Recipe
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class ManagementViewModel : ViewModel() {
 
     private var db = Firebase.firestore
     private val recipes = "Recipes"
     private val documentReference = db.collection(recipes)
+
+
 
     private val _selectedRecipe = MutableLiveData<Recipe>()
     val selectedRecipe: LiveData<Recipe> = _selectedRecipe
@@ -26,8 +32,6 @@ class ManagementViewModel : ViewModel() {
     }
 
     fun create(recipe: Recipe) {
-
-//        documentReference.add(recipe.toMap()).addOnSuccessListener {
 
         if (recipe.id != null) {
             documentReference.document(recipe.id!!).set(recipe.toMap())
@@ -55,5 +59,7 @@ class ManagementViewModel : ViewModel() {
 
         _selectedRecipe.value = recipe
     }
+
+
 
 }

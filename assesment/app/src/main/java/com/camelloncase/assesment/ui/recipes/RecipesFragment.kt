@@ -1,9 +1,12 @@
 package com.camelloncase.assesment.ui.recipes
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,6 +23,7 @@ import com.camelloncase.assesment.viewmodel.RecipesViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.QuerySnapshot
 
+
 class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
 
     private var _binding: FragmentRecipesBinding? = null
@@ -27,6 +31,7 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
     private lateinit var recipesRecyclerView: RecyclerView
     private lateinit var recipeAdapter: RecipeAdapter
     private lateinit var addFloatingActionButton: FloatingActionButton
+    private lateinit var backFloatingActionButton: FloatingActionButton
     private lateinit var viewModelFactory: ViewModelProvider.AndroidViewModelFactory
     private lateinit var viewModel: RecipesViewModel
     private lateinit var recipesList: ArrayList<Recipe>
@@ -34,7 +39,9 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+
+        (activity as AppCompatActivity?)!!.supportActionBar?.show()
 
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
 
@@ -48,14 +55,15 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
         viewModel.getAllRecipes()
 
         addFloatingActionButton = binding.addFloatingActionButton
+        backFloatingActionButton = binding.backFloatingActionButton
 
         addFloatingActionButton.setOnClickListener {
             goToCreateScreen()
         }
 
-//        viewModel.getListLiveData.observe(viewLifecycleOwner, Observer {
-//            onGetList(it)
-//        })
+        backFloatingActionButton.setOnClickListener {
+            goToInitialScreen()
+        }
 
         viewModel.recipeLoadingStatus.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -99,7 +107,7 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
         recipeAdapter.notifyDataSetChanged()
     }
 
-    private fun goToManagementScreen(recipe: Recipe) {
+    private fun goToUpdateScreen(recipe: Recipe) {
 
         val action = RecipesFragmentDirections.actionRecipesFragmentToManagementFragment()
         action.actionType = "update"
@@ -116,17 +124,20 @@ class RecipesFragment : Fragment(), RecipeAdapter.OnItemClickListener {
         findNavController().navigate(action)
     }
 
+    private fun goToInitialScreen() {
+        val action = RecipesFragmentDirections.actionRecipesFragmentToInitialFragment()
+        findNavController().navigate(action)
+    }
+
     override fun onClick(recipe: Recipe, position: Int) {
-        goToManagementScreen(recipe)
+        goToUpdateScreen(recipe)
     }
 
     override fun onDelete(recipe: Recipe, position: Int) {
-
         viewModel.delete(recipe.id!!)
     }
 
     private fun enableProgressBar(choice: Boolean) {
         binding.recipesLoadingProgressBar.isVisible = choice
     }
-
 }

@@ -5,7 +5,14 @@
       <map>
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/drawable-v24/ic_back.xml" value="0.2705" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/api_item.xml" value="0.2851851851851852" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_api_consumption.xml" value="0.36666666666666664" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_initial.xml" value="0.36666666666666664" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_management.xml" value="0.26145833333333335" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_recipes.xml" value="0.36666666666666664" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_recover.xml" value="0.26145833333333335" />
+        <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/fragment_register.xml" value="0.26145833333333335" />
         <entry key="..\:/_Code/infnet/1_Materias_em_curso/DESENVOLVIMENTO_ANDROID/kotlinDevelopment_Android/assesment/app/src/main/res/layout/recipe_item.xml" value="0.33" />
       </map>
     </option>

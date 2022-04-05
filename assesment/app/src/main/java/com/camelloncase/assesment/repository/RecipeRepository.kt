@@ -1,6 +1,8 @@
 package com.camelloncase.assesment.repository
 
 import android.util.Log
+import com.camelloncase.assesment.api.RetrofitInstance
+import com.camelloncase.assesment.model.Brewery
 import com.camelloncase.assesment.model.Recipe
 import com.camelloncase.assesment.util.Response
 import com.camelloncase.assesment.util.responseSafeCall
@@ -52,6 +54,8 @@ class RecipeRepository {
             documentReference.document(id).delete()
         }
     }
+
+
 }
 
 

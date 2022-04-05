@@ -17,8 +17,8 @@
             android:id="@+id/action_navigation_login_to_navigation_recover"
             app:destination="@id/navigation_recover" />
         <action
-            android:id="@+id/action_navigation_login_to_recipesFragment"
-            app:destination="@id/recipesFragment" />
+            android:id="@+id/action_navigation_login_to_initialFragment"
+            app:destination="@id/initialFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_register"
@@ -46,10 +46,9 @@
         <action
             android:id="@+id/action_recipesFragment_to_managementFragment"
             app:destination="@id/managementFragment" />
-
         <action
-            android:id="@+id/action_recipesFragment_to_navigation_login"
-            app:destination="@id/navigation_login" />
+            android:id="@+id/action_recipesFragment_to_initialFragment"
+            app:destination="@id/initialFragment" />
 
     </fragment>
     <fragment
@@ -83,5 +82,29 @@
             android:name="recipeUpdateDate"
             android:defaultValue=""
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/initialFragment"
+        android:name="com.camelloncase.assesment.ui.login.InitialFragment"
+        android:label="fragment_initial"
+        tools:layout="@layout/fragment_initial" >
+        <action
+            android:id="@+id/action_initialFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_initialFragment_to_apiConsumptionFragment"
+            app:destination="@id/apiConsumptionFragment" />
+        <action
+            android:id="@+id/action_initialFragment_to_navigation_login"
+            app:destination="@id/navigation_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/apiConsumptionFragment"
+        android:name="com.camelloncase.assesment.ui.api.ApiConsumptionFragment"
+        android:label="fragment_api_consumption"
+        tools:layout="@layout/fragment_api_consumption" >
+        <action
+            android:id="@+id/action_apiConsumptionFragment_to_initialFragment"
+            app:destination="@id/initialFragment" />
     </fragment>
 </navigation>

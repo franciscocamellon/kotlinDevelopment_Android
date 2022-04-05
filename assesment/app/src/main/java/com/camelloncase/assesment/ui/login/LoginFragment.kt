@@ -68,7 +68,7 @@ class LoginFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     enableProgressBar(false)
-                    navigateToRecipesScreen()
+                    navigateToInitialScreen()
                     showMessageToUser(context, "Logged In Successfully")
                 }
                 is Resource.Error -> {
@@ -93,9 +93,9 @@ class LoginFragment : Fragment() {
         )
     }
 
-    private fun navigateToRecipesScreen() {
+    private fun navigateToInitialScreen() {
         findNavController().navigate(
-            LoginFragmentDirections.actionNavigationLoginToRecipesFragment()
+            LoginFragmentDirections.actionNavigationLoginToInitialFragment()
         )
     }
 

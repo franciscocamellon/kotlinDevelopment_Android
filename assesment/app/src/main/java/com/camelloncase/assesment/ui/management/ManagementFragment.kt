@@ -1,18 +1,23 @@
 package com.camelloncase.assesment.ui.management
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.camelloncase.assesment.databinding.FragmentManagementBinding
 import com.camelloncase.assesment.model.Recipe
+import com.camelloncase.assesment.ui.login.InitialFragmentDirections
 import com.camelloncase.assesment.util.formattedCurrentDate
 import com.camelloncase.assesment.viewmodel.ManagementViewModel
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 class ManagementFragment : Fragment() {
@@ -25,13 +30,18 @@ class ManagementFragment : Fragment() {
     private lateinit var recipeStyle: EditText
     private lateinit var submitButton: Button
     private lateinit var cancelButton: Button
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        (activity as AppCompatActivity?)!!.supportActionBar?.show()
+
         _binding = FragmentManagementBinding.inflate(inflater, container, false)
+
+        verifyLoggedUser()
 
         val application = requireNotNull(this.activity).application
         viewModelFactory = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
@@ -102,9 +112,25 @@ class ManagementFragment : Fragment() {
         cancelButton = binding.cancelButton
     }
 
+    private fun verifyLoggedUser() {
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (user == null) {
+                navigateToLoginScreen()
+            }
+        }, 500)
+    }
+
     private fun goToRecipesScreen() {
         findNavController().navigate(
             ManagementFragmentDirections.actionManagementFragmentToRecipesFragment()
+        )
+    }
+    private fun navigateToLoginScreen() {
+        findNavController().navigate(
+            InitialFragmentDirections.actionInitialFragmentToNavigationLogin()
         )
     }
 
